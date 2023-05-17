@@ -74,3 +74,14 @@ brew install protoc-gen-go-grpc
 cd protos | make build
 ```
 
+````sh
+github.com/stretchr/testify/suite
+````
+```sh
+go mod vendor
+```
+
+```sh
+go test ./test -tags=acceptance -v
+```
+
