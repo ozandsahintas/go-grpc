@@ -22,3 +22,10 @@ docker exec -it <CONTAINER_ID> bash
 bash-5.0# psql -U postgres
 postgres=# \c postgres
 postgres=# \dt
+
+brew install protobuf
+protoc --version
+
+brew install protoc-gen-go-grpc
+cd protos
+

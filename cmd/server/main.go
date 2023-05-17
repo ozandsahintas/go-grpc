@@ -4,6 +4,7 @@ import (
 	"log"
 	"odesch.com/odesch/grpc-app/internal/db"
 	"odesch.com/odesch/grpc-app/internal/rocket"
+	"odesch.com/odesch/grpc-app/internal/transport/grpc"
 )
 
 func Run() error {
@@ -20,7 +21,12 @@ func Run() error {
 		log.Println("failed to run migrations")
 		return err
 	}
-	_ = rocket.New(rocketStore)
+	rService := rocket.New(rocketStore)
+	rHandler := grpc.New(rService)
+
+	if err := rHandler.Serve(); err != nil {
+		log.Fatal(err)
+	}
 
 	return nil
 }

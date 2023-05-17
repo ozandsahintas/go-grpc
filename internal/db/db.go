@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
+	"log"
 	"odesch.com/odesch/grpc-app/internal/rocket"
 	"os"
 )
@@ -34,13 +35,40 @@ func New() (Store, error) {
 }
 
 func (s Store) GetRocketById(id string) (rocket.Rocket, error) {
-	return rocket.Rocket{}, nil
+	var r rocket.Rocket
+	row := s.db.QueryRow(`SELECT id, name, type FROM rockets WHERE id=$1;`, id)
+	err := row.Scan(&r.Id, &r.Name, r.Type)
+	if err != nil {
+		log.Println(err.Error())
+		return rocket.Rocket{}, nil
+	}
+
+	return r, nil
 }
 
 func (s Store) InsertRocket(r rocket.Rocket) (rocket.Rocket, error) {
-	return rocket.Rocket{}, nil
+	_, err := s.db.NamedQuery(`INSERT INTO rockets (id,name,type) VALUES (:id, :name, :type)`, r)
+	if err != nil {
+		log.Println(err.Error())
+		return rocket.Rocket{}, nil
+	}
+	return rocket.Rocket{
+		Id:   r.Id,
+		Name: r.Name,
+		Type: r.Type,
+	}, nil
 }
 
 func (s Store) DeleteRocket(id string) error {
+	/*uid, err := uuid.FromString(id)
+	if err != nil {
+		return err
+	}*/
+
+	_, err := s.db.Exec(`DELETE FROM rockets WHERE id=$1`, id)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
