@@ -14,16 +14,28 @@ go get github.com/stretchr/testify/assert
 ```
 
 //go:generate mockgen -destination=rocket_mocks_test.go -package rocket odesch.com/odesch/grpc-app/internal/rocket Store <br />
-go test ./internal/rocket -v <br />
+
+```sh
+go generate
+```
+```sh
+go test ./internal/rocket -v
+```
+```sh
 go test ./... -v 
+```
 
 DB
 =
+```sh
 docker run --name <NAME_OF_THE_DB> -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
-
-go get github.com/jmoiron/sqlx <br />
+```
+```sh
+go get github.com/jmoiron/sqlx 
+```
+```sh
 go get github.com/golang-migrate/migrate/v4/database/postgres
-
+```
 Docker
 =
 docker-compose up --build
