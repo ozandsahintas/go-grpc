@@ -3,7 +3,7 @@ Go gRPC Services
 
 Unit Tests
 =
-``` bash
+```console
 go install github.com/golang/mock/gomock
 ```
 ``` bash
