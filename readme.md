@@ -38,20 +38,39 @@ go get github.com/golang-migrate/migrate/v4/database/postgres
 ```
 Docker
 =
+```sh
 docker-compose up --build
+```
+```sh
+docker ps -a
+```
+```sh
+docker exec -it <CONTAINER_ID> bash
+```
 
-docker ps -a <br />
-docker exec -it <CONTAINER_ID> bash <br />
-bash-5.0# psql -U postgres <br />
-postgres=# \c postgres <br />
-postgres=# \dt <br />
+bash-5.0#
+```sh
+psql -U postgres
+```
+
+postgres=# <br/>
+```postgresql
+\c postgres
+```
+```postgresql
+\dt
+```
 
 Protobuf & gRPC
 =
-brew install protobuf <br />
-protoc --version
+```sh
+brew install protobuf | protoc --version
+```
 
-brew install protoc-gen-go-grpc <br />
-cd protos <br/>
-make build
+```sh
+brew install protoc-gen-go-grpc
+```
+```sh
+cd protos | make build
+```
 
