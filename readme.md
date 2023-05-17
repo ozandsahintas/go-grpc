@@ -6,6 +6,7 @@ Unit Tests
 go install github.com/golang/mock/gomock <br />
 go get github.com/golang/mock/mockgen <br />
 go get github.com/stretchr/testify/assert
+
 //go:generate mockgen -destination=rocket_mocks_test.go -package rocket odesch.com/odesch/grpc-app/internal/rocket Store <br />
 go test ./internal/rocket -v <br />
 go test ./... -v 
