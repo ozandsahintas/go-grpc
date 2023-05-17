@@ -3,11 +3,14 @@ Go gRPC Services
 
 Unit Tests
 =
-```go install github.com/golang/mock/gomock
+``` bash
+go install github.com/golang/mock/gomock
 ```
-```go get github.com/golang/mock/mockgen
+``` bash
+go get github.com/golang/mock/mockgen
 ```
-```go get github.com/stretchr/testify/assert
+``` bash
+go get github.com/stretchr/testify/assert
 ```
 
 //go:generate mockgen -destination=rocket_mocks_test.go -package rocket odesch.com/odesch/grpc-app/internal/rocket Store <br />
