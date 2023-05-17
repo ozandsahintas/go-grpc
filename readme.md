@@ -3,13 +3,13 @@ Go gRPC Services
 
 Unit Tests
 =
-```console
+```sh
 go install github.com/golang/mock/gomock
 ```
-``` bash
+```sh
 go get github.com/golang/mock/mockgen
 ```
-``` bash
+```sh
 go get github.com/stretchr/testify/assert
 ```
 
